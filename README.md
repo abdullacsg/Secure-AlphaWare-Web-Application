@@ -3,6 +3,8 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-orange.svg)
 ![Security](https://img.shields.io/badge/OWASP-Top%2010%20Aligned-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![reCAPTCHA](https://img.shields.io/badge/reCAPTCHA-v2-blue.svg)
+
 ## Project Overview
 AlphaWare is a simple e‑commerce system originally developed in PHP, MySQLi, HTML, JavaScript, and Bootstrap. It provides a lightweight online store with two main interfaces: a customer‑facing storefront and an administrative backend. 
 It was first published on [SourceCodester](https://www.sourcecodester.com/php/11676/alphaware-simple-e-commerce-system.html) in March 2021 as an open‑source learning project.
@@ -98,10 +100,39 @@ Import the SQL Schema:
 ```bash
 /opt/lampp/bin/mysql -u root alphaware < alphaware.sql
 ```
-### 5. Access the Application
+### 5. Google reCAPTCHA Setup
+This project uses reCAPTCHA v2 ("I'm not a robot" tickbox) to prevent brute-force attacks.
+- Go to the [Google reCAPTCHA Admin Console.](https://www.google.com/recaptcha/admin/create)
+- Register a new site and select reCAPTCHA v2 -> "I'm not a robot" Checkbox.
+- Copy your Site Key and Secret Key.
+- Update the keys in your project files to enable the challenge verification:
+  * aboutus.php
+  * contactus.php
+  * details.php
+  * faqs.php
+  * football.php
+  * index.php
+  * privacy.php
+  * product.php
+  * running.php
+  * function/login.php
+  * function/admin_login.php
+  * function/customer_sginup.php
+  * admin/admin_index.php
+
+### 6. Database Security
+For extra security, you should modify the database connection settings:
+- Open the connection file: Secure-AlphaWare-Web-Application/db/dbconn.php.
+- Ensure you are not using the default root user with no password for production-like environments.
+- Update the host, username, and password variables to match your hardened database configuration.
+
+### 7. Access the Application
 
 
 Open your web browser and navigate to: [http://localhost/Secure-AlphaWare-Web-Application/](http://localhost/Secure-AlphaWare-Web-Application/)
+| Interface | Username | Password |
+| :--- | :--- | :--- |
+| **Admin Panel** | `admin` | `AlphaWare@2025` |
 
 ---
 ## Features
